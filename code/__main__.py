@@ -1,6 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
-from mpl_toolkits.mplot3d import Axes3D
+from scipy.stats import stats
 
 
 def load_inputs_and_outputs(filename):
@@ -82,10 +82,23 @@ def visualise(x, y):
     plot_scatters(norm_x, norm_y)
 
 
+def spearman(x, y):
+    n_x_cols = x.shape[1]
+    n_y_cols = y.shape[1]
+
+    for y_index in range(n_y_cols):
+        for x_index in range(n_x_cols):
+            x_col = x[:, x_index]
+            y_col = y[:, y_index]
+            s_rho, s_p = stats.spearmanr(x_col, y_col)
+            p_rho, p_p = stats.pearsonr(x_col, y_col)
+            print("Spearman - X{} : Y{} has Rho {} and p {}".format(x_index+1, y_index+1, s_rho, s_p))
+            print("Pearson  - X{} : Y{} has Rho {} and p {}".format(x_index+1, y_index+1, p_rho, p_p))
+
+
 x, y = load_inputs_and_outputs("data/ENB2012_data.csv")
 # visualise(x, y)
-
-
+spearman(x, y)
 
 # Add column of ones
 x = np.c_[np.ones_like(x), x]
