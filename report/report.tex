@@ -95,7 +95,7 @@ The input and output columns were separated into two variables x and y, as in ac
 
 Firstly, a histogram of each of the input variables and outputs were plotted in order to visualise the distribution of the values. When comparing to the histograms from the given paper TODO fig 1) ref paper, most of the plots matched. The difference was identified to be caused by 10 bins always being used (the default if not specified by numpy.hist), and the paper would sometimes use more. However, it was still clear that none of the variables had a gaussian distribution.
 
-In order to identify which variables affected the outputs most, scatter graphs each input variable 
+In order to identify which variables affected the outputs most, scatter graphs were made between each input and output variable. Feature scaling was used to allow for comparisons between values that could have very different ranges. Mean normalisation was used for the scatter plots. The resulting plots resembled those from the given paper (Figure 2 from given paper TODO), with different x-axis values since mean normalisation gave values in the range $-0.5 \leq x \leq 0.5 $.
 
 \part*{Conclusion}
 
