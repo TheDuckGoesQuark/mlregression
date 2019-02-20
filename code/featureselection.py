@@ -1,6 +1,7 @@
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 from scipy.stats import stats
+from sklearn.metrics import mutual_info_score
 
 
 def load_inputs_and_outputs(filename):
@@ -106,7 +107,7 @@ def visualise(x, y):
     plot_scatters(norm_x, norm_y)
 
 
-def spearman(x, y):
+def spearman_and_pearson(x, y):
     n_x_cols = x.shape[1]
     n_y_cols = y.shape[1]
 
@@ -116,5 +117,6 @@ def spearman(x, y):
             y_col = y[:, y_index]
             s_rho, s_p = stats.spearmanr(x_col, y_col)
             p_rho, p_p = stats.pearsonr(x_col, y_col)
-            print("Spearman - X{} : Y{} has Rho {} and p {}".format(x_index + 1, y_index + 1, s_rho, s_p))
-            print("Pearson  - X{} : Y{} has Rho {} and p {}".format(x_index + 1, y_index + 1, p_rho, p_p))
+            print("spearman - x{} : y{} has rho {} and p {}".format(x_index + 1, y_index + 1, s_rho, s_p))
+            print("pearson  - x{} : y{} has rho {} and p {}".format(x_index + 1, y_index + 1, p_rho, p_p))
+

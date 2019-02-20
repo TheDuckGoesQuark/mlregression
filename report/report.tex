@@ -99,7 +99,9 @@ In order to identify which variables affected the outputs most, scatter graphs w
 
 \part{Choosing Features}
 
-To try and identify which features had the strongest effect on the outputs, both the Pearson and Spearman rank correlation coefficients were used. It was noted that the Pearson correlation would give a perfect value when the two variables were linearly related, whilst the Spearman correlation (a similiar alternative, and the one used in the original paper) would give a perfect value when the variables were monotonically related. From the scatter plots, some variables appeared to have a possible linear relationship with the outputs (for example, X7 and Y1), whilst others had a monotonic relationship (for example, X1 and Y1). Using the Scipy \emph{stats.pearsonr} and \emph{stats.spearmanr} methods, the correlation coefficients were easily calculated, alongside a p-value.
+To try and identify which features had the strongest effect on the outputs, both the Pearson and Spearman rank correlation coefficients were used. It was noted that the Pearson correlation would give a perfect value when the two variables were linearly related, whilst the Spearman correlation (a similiar alternative, and the one used in the original paper) would give a perfect value when the variables were monotonically related. From the scatter plots, some variables appeared to have a possible linear relationship with the outputs (for example, X7 and Y1), whilst others had a monotonic relationship (for example, X1 and Y1). Using the Scipy \emph{stats.pearsonr} and \emph{stats.spearmanr} methods, the correlation coefficients were easily calculated, alongside a p-value. 
+
+
 
 \part*{Conclusion}
 
