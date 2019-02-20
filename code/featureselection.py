@@ -17,13 +17,12 @@ def plot_distributions(x, variable_name):
     :param variable_name: X/Y to print as title
     """
     n_cols = x.shape[1]
-    print(n_cols)
 
     plot_rows = n_cols // 2
     plot_rows += n_cols % 2
     plot_cols = 2
 
-    position = range(1, n_cols+1)
+    position = range(1, n_cols + 1)
     fig = plt.figure()
 
     for col_index in range(n_cols):
@@ -35,6 +34,7 @@ def plot_distributions(x, variable_name):
         ax.set_xlabel("Value")
 
     plt.tight_layout()
+    plt.show()
 
 
 def normalise(x):
@@ -68,24 +68,33 @@ def mean_normalise(x):
     return x
 
 
-def plot_scatter(x, y, figure_n, x_n, y_n):
-    plt.figure(figure_n)
-    plt.scatter(x, y)
-    plt.title("X{} against Y{}".format(x_n, y_n))
-    plt.ylabel("Y{}".format(y_n))
-    plt.xlabel("X{}".format(x_n))
-    plt.show()
-
-
 def plot_scatters(x, y):
     n_x_cols = x.shape[1]
     n_y_cols = y.shape[1]
 
-    fig_n = 0
     for y_index in range(n_y_cols):
+        num_plots = n_x_cols
+        plot_rows = num_plots // 3
+        plot_rows += num_plots % 3
+        plot_cols = 3
+
+        position = range(1, num_plots + 1)
+        fig = plt.figure(figsize=(10, 8))
+
+        current_plot = 0
         for x_index in range(n_x_cols):
-            plot_scatter(x[:, x_index], y[:, y_index], fig_n, x_index + 1, y_index + 1)
-            fig_n = fig_n + 1
+            x_values = x[:, x_index]
+            y_values = y[:, y_index]
+
+            ax = fig.add_subplot(plot_rows, plot_cols, position[current_plot])
+            ax.scatter(x_values, y_values)
+            ax.set_title("X{} against Y{}".format(x_index + 1, y_index + 1))
+            ax.set_ylabel("Y{}".format(y_index + 1))
+            ax.set_xlabel("X{}".format(x_index + 1))
+            current_plot = current_plot + 1
+
+        plt.tight_layout()
+        plt.show()
 
 
 def visualise(x, y):
