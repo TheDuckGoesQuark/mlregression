@@ -107,16 +107,24 @@ def visualise(x, y):
     plot_scatters(norm_x, norm_y)
 
 
-def spearman_and_pearson(x, y):
+def spearman(x, y):
     n_x_cols = x.shape[1]
     n_y_cols = y.shape[1]
 
-    for y_index in range(n_y_cols):
-        for x_index in range(n_x_cols):
+    rows = []
+    for x_index in range(n_x_cols):
+        for y_index in range(n_y_cols):
             x_col = x[:, x_index]
             y_col = y[:, y_index]
             s_rho, s_p = stats.spearmanr(x_col, y_col)
-            p_rho, p_p = stats.pearsonr(x_col, y_col)
-            print("spearman - x{} : y{} has rho {} and p {}".format(x_index + 1, y_index + 1, s_rho, s_p))
-            print("pearson  - x{} : y{} has rho {} and p {}".format(x_index + 1, y_index + 1, p_rho, p_p))
+            rows.append([x_index+1, y_index+1, s_rho, s_p])
+
+    fields = ["x", "y", "rho", "p"]
+    for item in fields:
+        print("{:>5}".format(item), end=" ")
+
+    print("")
+
+    for row in rows:
+        print("{:>5}, {:>5}, {:>5.2f}, {:>5.2f}".format(*row))
 

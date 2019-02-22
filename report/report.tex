@@ -97,11 +97,13 @@ Firstly, a histogram of each of the input variables and outputs were plotted in 
 
 In order to identify which variables affected the outputs most, scatter graphs were made between each input and output variable. Feature scaling was used to allow for comparisons between values that could have very different ranges. Mean normalisation was used for the scatter plots. The resulting plots resembled those from the given paper (Figure 2 from given paper TODO), with different x-axis values since mean normalisation gave values in the range $-0.5 \leq x \leq 0.5 $.
 
-\part{Choosing Features}
+\part{Feature Selection}
 
-To try and identify which features had the strongest effect on the outputs, both the Pearson and Spearman rank correlation coefficients were used. It was noted that the Pearson correlation would give a perfect value when the two variables were linearly related, whilst the Spearman correlation (a similiar alternative, and the one used in the original paper) would give a perfect value when the variables were monotonically related. From the scatter plots, some variables appeared to have a possible linear relationship with the outputs (for example, X7 and Y1), whilst others had a monotonic relationship (for example, X1 and Y1). Using the Scipy \emph{stats.pearsonr} and \emph{stats.spearmanr} methods, the correlation coefficients were easily calculated, alongside a p-value. 
+To try and identify which features had the strongest effect on the outputs, both the Pearson and Spearman rank correlation coefficients were considered. It was noted that the Pearson correlation would give a perfect value when the two variables were linearly related, whilst the Spearman correlation (a similiar alternative, and the one used in the original paper) would give a perfect value when the variables were monotonically related. Pearson is meant for use with continuous variables, whilst Spearman can be used for both continuous and ordinal variables, which our data set contains. Given these factors, the Spearman rank correlation coefficient was used as a filter method.
 
+From the scatter plots, some variables appeared to have a possible linear relationship with the outputs (for example, X7 and Y1), whilst others had a monotonic relationship (for example, X1 and Y1). Using the Scipy \emph{stats.pearsonr} and \emph{stats.spearmanr} methods, the correlation coefficients were easily calculated, alongside a p-value. 
 
+Based on these metrics, a number of features were to be chosen. Given the number of input features, using them all would have negative effects on the choosen algorithm. Including each feature could result in overfitting, and would require more training data to eliminate this issue. It would also increase the computation tie required to train our model. Features that have no real effect on the outputs would also act simply as noise, which would negatively effect our model.
 
 \part*{Conclusion}
 
