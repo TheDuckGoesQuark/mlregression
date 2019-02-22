@@ -1,7 +1,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import stats
+from sklearn.feature_selection import RFE
 from sklearn.metrics import mutual_info_score
+from sklearn.svm import LinearSVC, LinearSVR
 
 
 def load_inputs_and_outputs(filename):
@@ -128,3 +130,13 @@ def spearman(x, y):
     for row in rows:
         print("{:>5}, {:>5}, {:>5.2f}, {:>5.2f}".format(*row))
 
+
+def recursive_feature_elimination(x, y):
+    svm = LinearSVR()
+
+    for y_index in range(y.shape[1]):
+        y_col = y[:, y_index]
+        rfe = RFE(svm, 4)
+        rfe = rfe.fit(x, y_col)
+        print(rfe.support_)
+        print(rfe.ranking_)
