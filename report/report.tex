@@ -101,8 +101,7 @@ In order to identify which variables affected the outputs most, scatter graphs w
 
 To try and identify which features had the strongest effect on the outputs, both the Pearson and Spearman rank correlation coefficients were considered. It was noted that the Pearson correlation would give a perfect value when the two variables were linearly related, whilst the Spearman correlation (a similiar alternative, and the one used in the original paper) would give a perfect value when the variables were monotonically related. Pearson is meant for use with continuous variables, whilst Spearman can be used for both continuous and ordinal variables, which our data set contains. Given these factors, the Spearman rank correlation coefficient was used as a filter method.
 
-From the scatter plots, some variables appeared to have a possible linear relationship with the outputs (for example, X7 and Y1), whilst others had a monotonic relationship (for example, X1 and Y1). Using the Scipy \emph{stats.spearmanr} method, the correlation coefficients were easily calculated, alongside a p-value, as shown in table \ref{tbl:spearman-table}. Immediately from these result we can see that X6 shows little evidence of a monotonic relationship existing between it and either of the outputs. This can also be seen from the scatter plots.
-
+From the scatter plots, some variables appeared to have a possible linear relationship with the outputs (for example, X7 and Y1), whilst others had a monotonic relationship (for example, X1 and Y1). Using the Scipy \emph{stats.spearmanr} method, the correlation coefficients were easily calculated, alongside a p-value, as shown in table \ref{tbl:spearman-table}. Immediately from these result we can see that X6 and X8 shows little evidence of a monotonic relationship existing between them and either of the outputs. This can also be seen from the scatter plots.
 
 \begin{table}[!ht]
 \centering
@@ -132,7 +131,7 @@ X    				& Y & Rho   & p    \\
 \end{tabular}
 \end{table}
 
-Based on these metrics, a number of features were to be chosen. Given the number of input features, using them all would have negative effects on the choosen algorithm. Including each feature could result in overfitting, and would require more training data to eliminate this issue. It would also increase the computation tie required to train our model. Features that have no real effect on the outputs would also act simply as noise, which would negatively effect our model.
+Given the number of input features, using them all would have negative effects on the choosen algorithm. Including each feature could result in overfitting, and would require more training data to eliminate this issue. It would also increase the computation tie required to train our model. Features that have no real effect on the outputs would also act simply as noise, which would negatively effect our model. And since 
 
 Recursive Feature Elimination was also considered to help choose which features were important.
 
