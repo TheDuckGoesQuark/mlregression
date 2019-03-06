@@ -75,7 +75,7 @@ def plot_scatters(x, y):
             y_values = y[:, y_index]
 
             ax = fig.add_subplot(plot_rows, plot_cols, position[current_plot])
-            ax.scatter(x_values, y_values)
+            ax.scatter(x_values, y_values, alpha=0.1)
             ax.set_title("X{} against Y{}".format(x_index + 1, y_index + 1))
             ax.set_ylabel("Y{}".format(y_index + 1))
             ax.set_xlabel("X{}".format(x_index + 1))

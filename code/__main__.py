@@ -19,3 +19,6 @@ x = np.delete(x, 0, 1)
 
 # X3, 4, 5, 7 remain
 x_train, x_test, y_train, y_test = regression.split_data(x, y)
+
+x_train = featureselection.normalise(x_train)
+y_train = featureselection.normalise(y_train)
