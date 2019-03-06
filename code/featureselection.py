@@ -37,6 +37,7 @@ def plot_distributions(x, variable_name):
         ax.set_xlabel("Value")
 
     plt.tight_layout()
+    plt.savefig("plots/{}Dist.png".format(variable_name))
     plt.show()
 
 
@@ -97,6 +98,7 @@ def plot_scatters(x, y):
             current_plot = current_plot + 1
 
         plt.tight_layout()
+        plt.savefig("plots/XsVsY{}.png".format(y_index))
         plt.show()
 
 

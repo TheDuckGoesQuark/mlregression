@@ -26,10 +26,8 @@
 \usepackage[explicit]{titlesec}
 \usepackage{url}
 \usepackage{graphicx}
+\usepackage[section]{placeins}
 
-\definecolor{dkgreen}{rgb}{0,0.6,0}
-\definecolor{gray}{rgb}{0.5,0.5,0.5}
-\definecolor{mauve}{rgb}{0.58,0,0.82}
 
 \begin{document}
 
@@ -44,8 +42,8 @@
 %----------------------------------------------------------------------------------------
 
 \textsc{\LARGE University of St Andrews}\\[1.5cm] % Name of your university/college
-\textsc{\Large CS5014 Coursework 1}\\[0.5cm] % Major heading such as course name
-\textsc{\large }\\[0.5cm] % Minor heading such as course title
+\textsc{\Large CS5014 }\\[0.5cm] % Major heading such as course name
+\textsc{\large Practical 1}\\[0.5cm] % Minor heading such as course title
 
 %----------------------------------------------------------------------------------------
 %	TITLE SECTION
@@ -83,19 +81,51 @@
 
 \part*{Goal}
 
-The goal of this practical was to cleanse and process real world data in order to produce a regression model, and evaluate its performance. \citep{createreactapp}
+The goal of this practical was to cleanse and process real world data in order to produce a regression model, and evaluate its performance.
 
 \part{Loading and Cleaning the Data}
 
 Numpy was used to load the csv file. The header row was skipped, and to ensure there were no missing values, the invalid raise flag was also used when parsing the data. This would raise an exception if any rows were found to be missing data. 
 
-The input and output columns were separated into two variables x and y, as in accordance with the notation used in lectures.
+The input and output columns were separated into two variables x and y, in accordance with the notation used in lectures.
 
 \part{Analysing and Visualising the Data}
 
-Firstly, a histogram of each of the input variables and outputs were plotted in order to visualise the distribution of the values. When comparing to the histograms from the given paper TODO fig 1) ref paper, most of the plots matched. The difference was identified to be caused by 10 bins always being used (the default if not specified by numpy.hist), and the paper would sometimes use more. However, it was still clear that none of the variables had a gaussian distribution.
+Firstly, a histogram of each of the input variables and outputs were plotted in order to visualise the distribution of the values (Figures \ref{fig:xdist} and \ref{fig:ydist}). When comparing to the histograms from the given paper \cite{tsanas_xifara_2012}, most of the plots matched. Any differences were identified to be caused by 10 bins always being used (the default if not specified by numpy.hist), and the paper would sometimes use more. However, it was still clear that none of the variables had a gaussian distribution.
 
-In order to identify which variables affected the outputs most, scatter graphs were made between each input and output variable. Feature scaling was used to allow for comparisons between values that could have very different ranges. Mean normalisation was used for the scatter plots. The resulting plots resembled those from the given paper (Figure 2 from given paper TODO), with different x-axis values since mean normalisation gave values in the range $-0.5 \leq x \leq 0.5 $.
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.8 \linewidth]{images/XDist}
+\caption{Distribution of input variables}
+\label{fig:xdist}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.8 \linewidth]{images/YDist}
+\caption{Distribution of output variables}
+\label{fig:ydist}
+\end{figure}
+
+\FloatBarrier
+
+In order to identify which variables had the strongest relationships with the outputs, and if these relationships were linear or monotonic, scatter graphs were made between each input and output variable (Figures \ref{fig:xvsy0} and \ref{fig:xvsy1}). Feature scaling (specifically mean normalisation) was used to allow for comparisons between values that could have very different ranges. The resulting plots resembled those from the given paper, with different x-axis values since mean normalisation gave values in the range $-0.5 \leq x \leq 0.5 $.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.8 \linewidth]{images/XsVsY0}
+\caption{Normalised inputs plotted against the first output variable}
+\label{fig:xvsy0}
+\end{figure}
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.8 \linewidth]{images/XsVsY0}
+\caption{Normalised inputs plotted against the second output variable}
+\label{fig:xvsy1}
+\end{figure}
+
+\FloatBarrier
 
 \part{Feature Selection}
 
@@ -131,11 +161,9 @@ X    				& Y & Rho   & p    \\
 \end{tabular}
 \end{table}
 
-Given the number of input features, using them all would have negative effects on the choosen algorithm. Including each feature could result in overfitting, and would require more training data to eliminate this issue. It would also increase the computation tie required to train our model. Features that have no real effect on the outputs would also act simply as noise, which would negatively effect our model. And since the amount of available data is small, it would be preferable to use fewer features.
+Given the number of input features, using them all would have negative effects on the choosen algorithm. Including each feature could result in overfitting, and would require more training data to eliminate this issue. It would also increase the computation time required to train our model. Features that have no real effect on the outputs would also act simply as noise, which would negatively effect our model. And since the amount of available data is small, it would be preferable to use fewer features.
 
-Recursive Feature Elimination was then also considered to help choose which features were important. It does this by creating models using subsets of the features, determines the worst performing feature from both subset, removes it, and repeats this process recursively until a specific number of features are left. # TODO explain how sklearn does this to justify using it. Using the \emph{RFE} class from sklearn, this was done fairly simply, and when asked to identify the 4 best performing features for both Y1 and Y2, it eliminated X1 and X2. 
-
-3,4,5,7 left <3 ?
+Recursive Feature Elimination was then also considered to help choose which features were important. It does this by creating models using subsets of the features, determines the worst performing feature from both subsets, removing it, and then repeating this process recursively until a specific number of features are left. Using the \emph{RFE} class from sklearn, this was done fairly simply, and when asked to identify the 4 best performing features for both Y1 and Y2, it eliminated X1 and X2. 
 
 \part*{Conclusion}
 
