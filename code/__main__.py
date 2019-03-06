@@ -9,6 +9,11 @@ x, y = featureselection.load_inputs_and_outputs("data/ENB2012_data.csv")
 x = np.delete(x, 5, 1)
 x = np.delete(x, 6, 1)
 
-featureselection.recursive_feature_elimination(x, y)
+# featureselection.recursive_feature_elimination(x, y)
 
+# Remove X1 and X2 from features as discussed in report
+x = np.delete(x, 0, 1)
+x = np.delete(x, 0, 1)
+
+# X3, 4, 5, 7 remain
 

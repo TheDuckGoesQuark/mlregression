@@ -79,9 +79,18 @@
 
 \end{titlepage}
 
+\pagenumbering{gobble}
+
 \part*{Goal}
 
 The goal of this practical was to cleanse and process real world data in order to produce a regression model, and evaluate its performance.
+
+\tableofcontents
+
+\pagebreak
+
+\pagenumbering{arabic}
+\setcounter{page}{1}
 
 \part{Loading and Cleaning the Data}
 
@@ -133,6 +142,8 @@ To try and identify which features had the strongest effect on the outputs, both
 
 From the scatter plots, some variables appeared to have a possible linear relationship with the outputs (for example, X7 and Y1), whilst others had a monotonic relationship (for example, X1 and Y1). Using the Scipy \emph{stats.spearmanr} method, the correlation coefficients were easily calculated, alongside a p-value, as shown in table \ref{tbl:spearman-table}. Immediately from these result we can see that X6 and X8 show little evidence of a monotonic relationship existing between them and either of the outputs. This can also be seen from the scatter plots.
 
+Given more time and better knowledge of the subject matter, it may be possible to merge correlated features instead of remove them in order to reduce the number of dimensions of our input. 
+
 \begin{table}[!ht]
 \centering
 \caption{Spearman rank correlation coefficients, with p values}
@@ -163,9 +174,19 @@ X    				& Y & Rho   & p    \\
 
 Given the number of input features, using them all would have negative effects on the choosen algorithm. Including each feature could result in overfitting, and would require more training data to eliminate this issue. It would also increase the computation time required to train our model. Features that have no real effect on the outputs would also act simply as noise, which would negatively effect our model. And since the amount of available data is small, it would be preferable to use fewer features.
 
-Recursive Feature Elimination was then also considered to help choose which features were important. It does this by creating models using subsets of the features, determines the worst performing feature from both subsets, removing it, and then repeating this process recursively until a specific number of features are left. Using the \emph{RFE} class from sklearn, this was done fairly simply, and when asked to identify the 4 best performing features for both Y1 and Y2, it eliminated X1 and X2. 
+Recursive Feature Elimination was then also considered to help choose which features were important. It does this by creating models using subsets of the features, determining the worst performing feature from both subsets, removing it, and then repeating this process recursively until a specific number of features are left. Using the \emph{RFE} class from sklearn, this was done fairly simply, and when asked to identify the 4 best performing features for both Y1 and Y2, it eliminated X1 and X2. 
 
-\part*{Conclusion}
+\part{Selecting and Training a Regression Model}
+
+The limited size of the corpus available made the choice of algorithm especially crucial. The lack of noticable outliers in the visualistions at least suggest that the data is not of poor-quality. Despite the small corpus, cross-validation would still be used, and so the data was split into a training and testing set with the common 80\%-20\% split \cite{gron_2018}. 
+
+To split the data set, simple random sampling (SRS) and DUPLEX were considered. SRS is significantly simpler to implement than DUPLEX, but for less uniformly distributed data sets, it can lead to subsets that poorly represent the input data \cite{reitermanova_2010}. The increased time complexity of DUPLEX would be an issue with larger datasets, but since this is not the case DUPLEX was choosen.
+
+\part{Performance Evaluation}
+
+\part{Discussion}
+
+\part{Conclusion}
 
 \bibliographystyle{unsrt}
 \bibliography{mybib}
