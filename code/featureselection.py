@@ -56,22 +56,6 @@ def normalise(x):
     return x
 
 
-def mean_normalise(x):
-    """
-    Normalise each column in x by subtracting the mean from each value and diving by the range.
-    :param x: a 2D matrix of values
-    :return: The normalised matrix
-    """
-    n_cols = x.shape[1]
-    for col_index in range(n_cols):
-        col = x[:, col_index]
-        mean = np.mean(col)
-        range_of_col = np.max(col) - np.min(col)
-        x[:, col_index] = (col - mean) / range_of_col
-
-    return x
-
-
 def plot_scatters(x, y):
     n_x_cols = x.shape[1]
     n_y_cols = y.shape[1]
@@ -101,6 +85,14 @@ def plot_scatters(x, y):
         plt.savefig("plots/XsVsY{}.png".format(y_index))
         plt.show()
 
+    # plot ys against each other also
+    plt.scatter(y[:, 0], y[:, 1])
+    plt.title("Y1 against Y2")
+    plt.xlabel("Y1")
+    plt.ylabel("Y2")
+    plt.savefig("plots/Y1vsY2.png")
+    plt.show()
+
 
 def visualise(x, y):
     plot_distributions(x, "X")
@@ -121,7 +113,7 @@ def spearman(x, y):
             x_col = x[:, x_index]
             y_col = y[:, y_index]
             s_rho, s_p = stats.spearmanr(x_col, y_col)
-            rows.append([x_index+1, y_index+1, s_rho, s_p])
+            rows.append([x_index + 1, y_index + 1, s_rho, s_p])
 
     fields = ["x", "y", "rho", "p"]
     for item in fields:

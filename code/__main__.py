@@ -1,5 +1,7 @@
-import featureselection
 import numpy as np
+
+import featureselection
+import regression
 
 x, y = featureselection.load_inputs_and_outputs("data/ENB2012_data.csv")
 # featureselection.visualise(x, y)
@@ -16,4 +18,4 @@ x = np.delete(x, 0, 1)
 x = np.delete(x, 0, 1)
 
 # X3, 4, 5, 7 remain
-
+x_train, x_test, y_train, y_test = regression.split_data(x, y)

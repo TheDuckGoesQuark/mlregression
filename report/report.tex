@@ -96,11 +96,13 @@ The goal of this practical was to cleanse and process real world data in order t
 
 Numpy was used to load the csv file. The header row was skipped, and to ensure there were no missing values, the invalid raise flag was also used when parsing the data. This would raise an exception if any rows were found to be missing data. 
 
+No preproccessing had occurred on the data set according to the original paper, and so the data could be used as given.
+
 The input and output columns were separated into two variables x and y, in accordance with the notation used in lectures.
 
 \part{Analysing and Visualising the Data}
 
-Firstly, a histogram of each of the input variables and outputs were plotted in order to visualise the distribution of the values (Figures \ref{fig:xdist} and \ref{fig:ydist}). When comparing to the histograms from the given paper \cite{tsanas_xifara_2012}, most of the plots matched. Any differences were identified to be caused by 10 bins always being used (the default if not specified by numpy.hist), and the paper would sometimes use more. However, it was still clear that none of the variables had a gaussian distribution.
+Firstly, a histogram of each of the input variables and outputs were plotted in order to visualise the distribution of the values (Figures \ref{fig:xdist} and \ref{fig:ydist}). When comparing to the histograms from the given paper \cite{tsanas_xifara_2012}, most of the plots matched. Any differences were identified to be caused by 10 bins always being used (the default if not specified by numpy.hist), and the paper would sometimes use more. However, it was still clear that none of the variables had a gaussian distribution. The output variables also appeared tail heavy, but the inputs did not.
 
 \begin{figure}[!ht]
 \centering
@@ -132,6 +134,17 @@ In order to identify which variables had the strongest relationships with the ou
 \includegraphics[width=0.8 \linewidth]{images/XsVsY0}
 \caption{Normalised inputs plotted against the second output variable}
 \label{fig:xvsy1}
+\end{figure}
+
+\FloatBarrier
+
+Since the distribution of the outputs were so similiar, they were also plotted against each other in a scatter plot (Figure \ref{fig:y1vsy2}). This showed that the two variables had very similiar values, and so a regression model that applied to only one of them could likely be used for the other.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.8 \linewidth]{images/Y1vsY2}
+\caption{Normalised outputs against each other}
+\label{fig:y1vsy2}
 \end{figure}
 
 \FloatBarrier
@@ -176,11 +189,18 @@ Given the number of input features, using them all would have negative effects o
 
 Recursive Feature Elimination was then also considered to help choose which features were important. It does this by creating models using subsets of the features, determining the worst performing feature from both subsets, removing it, and then repeating this process recursively until a specific number of features are left. Using the \emph{RFE} class from sklearn, this was done fairly simply, and when asked to identify the 4 best performing features for both Y1 and Y2, it eliminated X1 and X2. 
 
+Next, the testing set was to be isolated from the available data. Simple random sampling (SRS) and stratified sampling were considered for performing our data splitting. SRS is intuitive, but for less uniformly distributed data sets, it can lead to subsets that poorly represent the input data, and therefore suffer from sampling bias \cite{reitermanova_2010}. 
+
+For these reasons, stratified random sampling was used with a 80\%-20\% split. In order to do so, the data would have to first be split into seperate strata. To ensure our training and testing sets were representative of our data, the output variables were used to categorise the data into strata. Since the two appeared to have a linear relationship as shown in figure \ref{fig:y1vsy2}, we could assume that using one column for categorising our data would produce an equal distribution of the values in both columns.
+
+The 586 possible values of Y1 were split into 50 bins using \url{numpy.digitize}, and then passed to \url{train_test_split} as the \url{stratify} argument. Scatter plots of the training data and test data were used to confirm that this method of stratifying did capture most features of the data. 
+
 \part{Selecting and Training a Regression Model}
 
-The limited size of the corpus available made the choice of algorithm especially crucial. The lack of noticable outliers in the visualistions at least suggest that the data is not of poor-quality. Despite the small corpus, cross-validation would still be used, and so the data was split into a training and testing set with the common 80\%-20\% split \cite{gron_2018}. 
+The limited size of the corpus available made the choice of algorithm especially crucial. The lack of noticable outliers in the visualistions at least suggest that the data is not of poor-quality. Due to the small corpus size, K-fold cross-validation was chosen to estimate the model error \cite{gron_2018}. 
 
-To split the data set, simple random sampling (SRS) and DUPLEX were considered. SRS is significantly simpler to implement than DUPLEX, but for less uniformly distributed data sets, it can lead to subsets that poorly represent the input data \cite{reitermanova_2010}. The increased time complexity of DUPLEX would be an issue with larger datasets, but since this is not the case DUPLEX was choosen.
+Root Mean Square Error (RMSE) and Mean Absolute Error (MAE) were both considered as performance measures for regression. RMSE is more sensitive to outliers, but is generally preffered when absent, which is true for our input, and so it was chosen. 
+
 
 \part{Performance Evaluation}
 

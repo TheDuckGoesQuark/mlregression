@@ -1,8 +1,8 @@
 \babel@toc {english}{}
 \contentsline {part}{I\hspace {1em}Loading and Cleaning the Data}{1}
 \contentsline {part}{II\hspace {1em}Analysing and Visualising the Data}{1}
-\contentsline {part}{III\hspace {1em}Feature Selection}{4}
-\contentsline {part}{IV\hspace {1em}Selecting and Training a Regression Model}{6}
-\contentsline {part}{V\hspace {1em}Performance Evaluation}{6}
-\contentsline {part}{VI\hspace {1em}Discussion}{6}
-\contentsline {part}{VII\hspace {1em}Conclusion}{6}
+\contentsline {part}{III\hspace {1em}Feature Selection}{5}
+\contentsline {part}{IV\hspace {1em}Selecting and Training a Regression Model}{7}
+\contentsline {part}{V\hspace {1em}Performance Evaluation}{7}
+\contentsline {part}{VI\hspace {1em}Discussion}{8}
+\contentsline {part}{VII\hspace {1em}Conclusion}{8}

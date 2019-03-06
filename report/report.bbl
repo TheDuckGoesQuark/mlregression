@@ -6,15 +6,15 @@ Athanasios Tsanas and Angeliki Xifara.
   buildings using statistical machine learning tools.
 \newblock {\em Energy and Buildings}, 49:560--567, 2012.
 
+\bibitem{reitermanova_2010}
+Z.~Reitermanova.
+\newblock {\em Data Splitting}.
+\newblock Matfyzpress, 2010.
+
 \bibitem{gron_2018}
 Aurlien Gron.
 \newblock {\em Hands-On Machine Learning with Scikit-Learn, Keras, and
   Tensorflow}.
 \newblock O'Reilly Media, 2018.
-
-\bibitem{reitermanova_2010}
-Z.~Reitermanova.
-\newblock {\em Data Splitting}.
-\newblock Matfyzpress, 2010.
 
 \end{thebibliography}
