@@ -163,12 +163,10 @@ From the scatter plots, some variables appeared to have a possible linear relati
 
 However, according to Schiavon et al. \cite{schiavon_lee_bauman_webster_2010}, the orientation (X6) is one of the most important predictors for cooling load (Y2). Though fewer features would improve the processing time, and removing less important features would be crucial for  eliminating noise, only X8 was removed from our feature set.
 
-Given more time and better knowledge of the subject matter, it may be possible to merge correlated inputs instead of remove them in order to reduce the number of dimensions of our input. 
-
 \begin{table}[!ht]
 \centering
 \caption{Spearman rank correlation coefficients, with p values}
-\label{tbl:spearman-table}
+\label{tbl:spearman-table}j
 \begin{tabular}{||l|l|l|l||}
 \hline
 X    				& Y & Rho   & p    \\
@@ -183,7 +181,7 @@ X    				& Y & Rho   & p    \\
 4                   & 2 & -0.80 & 0.00 \\
 5                   & 1 & 0.86  & 0.00 \\
 5                   & 2 & 0.86  & 0.00 \\
-6                   & 1 & 0.00  & 0.99 \\
+6                   & 1 & 0.00  & 0.99 \\%
 6                   & 2 & 0.03  & 0.51 \\
 7                   & 1 & 0.35  & 0.00 \\
 7                   & 2 & 0.32  & 0.00 \\
@@ -195,9 +193,12 @@ X    				& Y & Rho   & p    \\
 
 \part{Selecting and Training a Regression Model}
 
-The limited size of the corpus available made the choice of algorithm especially crucial. The lack of noticable outliers in the visualistions at least suggest that the data is not of poor-quality. Due to the small corpus size, K-fold cross-validation was chosen to estimate the model error \cite{gron_2018}. 
+The limited size of the corpus available made the choice of algorithm especially crucial. The lack of noticable outliers in the visualistions at least suggest that the data is not of poor-quality. 
 
-Root Mean Square Error (RMSE) and Mean Absolute Error (MAE) were both considered as performance measures for regression. RMSE is more sensitive to outliers, but is generally preffered when absent, which is true for our input, and so it was chosen. 
+
+
+
+Due to the small corpus size, K-fold cross-validation was chosen to estimate the model error \cite{gron_2018}. 
 
 \part{Performance Evaluation}
 

@@ -1,9 +1,9 @@
 import matplotlib.pyplot as plt
 import numpy as np
 from scipy.stats import stats
-from sklearn.feature_selection import RFE
+from sklearn.feature_selection import mutual_info_classif
 from sklearn.metrics import mutual_info_score
-from sklearn.svm import LinearSVC, LinearSVR
+from sklearn.model_selection import train_test_split
 
 
 def load_inputs_and_outputs(filename):
@@ -125,12 +125,7 @@ def spearman(x, y):
         print("{:>5}, {:>5}, {:>5.2f}, {:>5.2f}".format(*row))
 
 
-def recursive_feature_elimination(x, y):
-    svm = LinearSVR()
-
-    for y_index in range(y.shape[1]):
-        y_col = y[:, y_index]
-        rfe = RFE(svm, 4)
-        rfe = rfe.fit(x, y_col)
-        print(rfe.support_)
-        print(rfe.ranking_)
+def split_data(x, y):
+    bins = np.linspace(0, y.shape[1], 50)
+    y_binned = np.digitize(y[:, 0], bins)
+    return train_test_split(x, y, test_size=0.2, random_state=42, stratify=y_binned)
