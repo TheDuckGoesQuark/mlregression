@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.11.3)  7 MAR 2019 13:57
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.11.3)  7 MAR 2019 14:23
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -257,33 +257,34 @@ File: images/XsVsY1.png Graphic file (type png)
 Package pdftex.def Info: images/XsVsY1.png  used on input line 140.
 (pdftex.def)             Requested size: 312.00119pt x 194.1545pt.
  [3 <./images/YDist.png>]
-<images/Y1vsY2.png, id=34, 462.528pt x 346.896pt>
+<images/Y1vsY2.png, id=32, 462.528pt x 346.896pt>
 File: images/Y1vsY2.png Graphic file (type png)
 <use images/Y1vsY2.png>
 Package pdftex.def Info: images/Y1vsY2.png  used on input line 151.
 (pdftex.def)             Requested size: 312.00119pt x 234.01236pt.
  [4 <./images/XsVsY0.png> <./images/XsVsY1.png>] [5 <./images/Y1vsY2.png>] [6] 
-(./report.bbl [7])
-[8] (./report.aux) ) 
+(./report.bbl
+(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-32.def
+File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
+) [7]) [8]
+(./report.aux) ) 
 Here is how much of TeX's memory you used:
- 2988 strings out of 494880
- 42506 string characters out of 6179601
- 119535 words of memory out of 5000000
- 6250 multiletter control sequences out of 15000+600000
+ 3250 strings out of 494880
+ 45593 string characters out of 6179601
+ 119550 words of memory out of 5000000
+ 6509 multiletter control sequences out of 15000+600000
  10260 words of font info for 36 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 41i,8n,28p,715b,229s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/
-cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmc
-sc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/shar
-e/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texl
-ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on report.pdf (10 pages, 347634 bytes).
+ 41i,8n,28p,633b,377s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10
+.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></
+usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/sh
+are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on report.pdf (10 pages, 333003 bytes).
 PDF statistics:
- 78 PDF objects out of 1000 (max. 8388607)
- 46 compressed objects within 1 object stream
+ 70 PDF objects out of 1000 (max. 8388607)
+ 40 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  31 words of extra memory for PDF output out of 10000 (max. 10000000)
 

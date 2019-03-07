@@ -11,6 +11,12 @@ Athanasios Tsanas and Angeliki Xifara.
   buildings using statistical machine learning tools.
 \newblock {\em Energy and Buildings}, 49:560--567, 2012.
 
+\bibitem{schiavon_lee_bauman_webster_2010}
+Stefano Schiavon, Kwang~Ho Lee, Fred Bauman, and Tom Webster.
+\newblock Influence of raised floor on zone design cooling load in commercial
+  buildings.
+\newblock {\em Energy and Buildings}, 42(8):1182–1191, 2010.
+
 \bibitem{gron_2018}
 Aurlien Gron.
 \newblock {\em Hands-On Machine Learning with Scikit-Learn, Keras, and
