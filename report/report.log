@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.11.3)  7 MAR 2019 19:56
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2018.11.3)  7 MAR 2019 21:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -123,37 +123,58 @@ Package: placeins 2005/04/18  v 2.2
 )
 (/usr/share/texlive/texmf-dist/tex/latex/chngcntr/chngcntr.sty
 Package: chngcntr 2009/09/02 v1.0a change counter resetting
+)
+(/usr/share/texlive/texmf-dist/tex/latex/caption/subcaption.sty
+Package: subcaption 2016/05/22 v1.1-161 Sub-captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2016/02/21 v3.3-144 Customizing captions (AR)
+
+(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2016/05/22 v1.7-166 caption3 kernel (AR)
+Package caption3 Info: TeX engine: e-TeX on input line 67.
+\captionmargin=\dimen111
+\captionmargin@=\dimen112
+\captionwidth=\dimen113
+\caption@tempdima=\dimen114
+\caption@indent=\dimen115
+\caption@parindent=\dimen116
+\caption@hangindent=\dimen117
+)
+\c@ContinuedFloat=\count91
+)
+\c@subfigure=\count92
+\c@subtable=\count93
 ) (./report.aux)
 \openout1 = `report.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 35.
-LaTeX Font Info:    ... okay on input line 35.
-
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 36.
+LaTeX Font Info:    ... okay on input line 36.
 (/usr/share/texlive/texmf-dist/tex/latex/ucs/ucsencs.def
 File: ucsencs.def 2011/01/21 Fixes to fontencodings LGR, T3
 )
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count91
-\scratchdimen=\dimen111
+\scratchcounter=\count94
+\scratchdimen=\dimen118
 \scratchbox=\box27
-\nofMPsegments=\count92
-\nofMParguments=\count93
+\nofMPsegments=\count95
+\nofMParguments=\count96
 \everyMPshowfont=\toks21
-\MPscratchCnt=\count94
-\MPscratchDim=\dimen112
-\MPnumerator=\count95
-\makeMPintoPDFobject=\count96
+\MPscratchCnt=\count97
+\MPscratchDim=\dimen119
+\MPnumerator=\count98
+\makeMPintoPDFobject=\count99
 \everyMPtoPDFconversion=\toks22
 ) (/usr/share/texlive/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -211,10 +232,12 @@ G,.JBIG2,.JB2,.eps]
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: End \AtBeginDocument code.
 <images/standrewslogo.png, id=1, 185.19188pt x 225.84375pt>
 File: images/standrewslogo.png Graphic file (type png)
 <use images/standrewslogo.png>
-Package pdftex.def Info: images/standrewslogo.png  used on input line 77.
+Package pdftex.def Info: images/standrewslogo.png  used on input line 78.
 (pdftex.def)             Requested size: 88.2037pt x 107.56636pt.
 
 [1
@@ -226,13 +249,13 @@ Package pdftex.def Info: images/standrewslogo.png  used on input line 77.
 
  [2]
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 113.
+(Font)              <12> on input line 114.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 113.
+(Font)              <8> on input line 114.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 113.
+(Font)              <6> on input line 114.
 
-Overfull \hbox (6.90376pt too wide) in paragraph at lines 113--114
+Overfull \hbox (6.90376pt too wide) in paragraph at lines 114--115
 []\OT1/cmr/m/n/12 The 586 pos-si-ble val-ues of Y1 were split into 50 bins us-i
 ng $\OT1/cmtt/m/n/12 numpy . digitize$\OT1/cmr/m/n/12 ,
  []
@@ -241,69 +264,105 @@ ng $\OT1/cmtt/m/n/12 numpy . digitize$\OT1/cmr/m/n/12 ,
 <images/XDist.png, id=23, 462.528pt x 346.896pt>
 File: images/XDist.png Graphic file (type png)
 <use images/XDist.png>
-Package pdftex.def Info: images/XDist.png  used on input line 123.
+Package pdftex.def Info: images/XDist.png  used on input line 124.
 (pdftex.def)             Requested size: 312.00119pt x 234.01236pt.
 <images/YDist.png, id=24, 462.528pt x 346.896pt>
 File: images/YDist.png Graphic file (type png)
 <use images/YDist.png>
-Package pdftex.def Info: images/YDist.png  used on input line 130.
+Package pdftex.def Info: images/YDist.png  used on input line 131.
 (pdftex.def)             Requested size: 312.00119pt x 234.01236pt.
  [2 <./images/XDist.png>]
 <images/XsVsY0.png, id=29, 700.2963pt x 435.7881pt>
 File: images/XsVsY0.png Graphic file (type png)
 <use images/XsVsY0.png>
-Package pdftex.def Info: images/XsVsY0.png  used on input line 143.
+Package pdftex.def Info: images/XsVsY0.png  used on input line 144.
 (pdftex.def)             Requested size: 312.00119pt x 194.1545pt.
 <images/XsVsY1.png, id=30, 700.2963pt x 435.7881pt>
 File: images/XsVsY1.png Graphic file (type png)
 <use images/XsVsY1.png>
-Package pdftex.def Info: images/XsVsY1.png  used on input line 150.
+Package pdftex.def Info: images/XsVsY1.png  used on input line 151.
 (pdftex.def)             Requested size: 312.00119pt x 194.1545pt.
  [3 <./images/YDist.png>]
 <images/Y1vsY2.png, id=35, 462.528pt x 346.896pt>
 File: images/Y1vsY2.png Graphic file (type png)
 <use images/Y1vsY2.png>
-Package pdftex.def Info: images/Y1vsY2.png  used on input line 161.
+Package pdftex.def Info: images/Y1vsY2.png  used on input line 162.
 (pdftex.def)             Requested size: 312.00119pt x 234.01236pt.
- [4 <./images/XsVsY0.png> <./images/XsVsY1.png>] [5 <./images/Y1vsY2.png>] [6]
+ [4 <./images/XsVsY0.png> <./images/XsVsY1.png>]
+
+Package caption Warning: \label without proper reference on input line 181.
+See the caption package documentation for explanation.
+
+
+LaTeX Warning: Reference `tbl:spearman-table' on page 5 undefined on input line
+ 175.
+
+[5 <./images/Y1vsY2.png>] [6]
 <images/cartvslinear.png, id=49, 536.0025pt x 373.395pt>
 File: images/cartvslinear.png Graphic file (type png)
 <use images/cartvslinear.png>
-Package pdftex.def Info: images/cartvslinear.png  used on input line 217.
+Package pdftex.def Info: images/cartvslinear.png  used on input line 218.
 (pdftex.def)             Requested size: 312.00119pt x 217.34412pt.
  [7] [8 <./images/cartvslinear.png>]
 <images/depth.png, id=57, 462.528pt x 346.896pt>
 File: images/depth.png Graphic file (type png)
 <use images/depth.png>
-Package pdftex.def Info: images/depth.png  used on input line 240.
+Package pdftex.def Info: images/depth.png  used on input line 241.
 (pdftex.def)             Requested size: 312.00119pt x 234.01236pt.
- (./report.bbl [9 <./images/depth.png>]
-(/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-32.def
+ [9 <./images/depth.png>]
+<images/Y1errordist.png, id=62, 462.528pt x 346.896pt>
+File: images/Y1errordist.png Graphic file (type png)
+<use images/Y1errordist.png>
+Package pdftex.def Info: images/Y1errordist.png  used on input line 260.
+(pdftex.def)             Requested size: 195.0pt x 146.2511pt.
+<images/Y1scatter.png, id=63, 462.528pt x 346.896pt>
+File: images/Y1scatter.png Graphic file (type png)
+<use images/Y1scatter.png>
+Package pdftex.def Info: images/Y1scatter.png  used on input line 266.
+(pdftex.def)             Requested size: 195.0pt x 146.2511pt.
+<images/Y2errordist.png, id=64, 462.528pt x 346.896pt>
+File: images/Y2errordist.png Graphic file (type png)
+<use images/Y2errordist.png>
+Package pdftex.def Info: images/Y2errordist.png  used on input line 278.
+(pdftex.def)             Requested size: 195.0pt x 146.2511pt.
+<images/Y2scatter.png, id=65, 462.528pt x 346.896pt>
+File: images/Y2scatter.png Graphic file (type png)
+<use images/Y2scatter.png>
+Package pdftex.def Info: images/Y2scatter.png  used on input line 284.
+(pdftex.def)             Requested size: 195.0pt x 146.2511pt.
+ [10 <./images/Y1errordist.png> <./images/Y1scatter.png>]
+(./report.bbl (/usr/share/texlive/texmf-dist/tex/latex/ucs/data/uni-32.def
 File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
 )
+[11 <./images/Y2errordist.png> <./images/Y2scatter.png>]
 Underfull \hbox (badness 4279) in paragraph at lines 21--24
 []\OT1/cmr/m/n/12 Scikit-learn de-ci-sion trees.  $\OT1/cmtt/m/n/12 https : / /
  scikit-[]learn . org / stable /
  []
 
-[10]) [11] (./report.aux) ) 
+) [12] (./report.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
 Here is how much of TeX's memory you used:
- 3292 strings out of 494880
- 46522 string characters out of 6179601
- 120015 words of memory out of 5000000
- 6546 multiletter control sequences out of 15000+600000
- 10567 words of font info for 37 fonts, out of 8000000 for 9000
+ 4445 strings out of 494880
+ 67461 string characters out of 6179601
+ 141438 words of memory out of 5000000
+ 7686 multiletter control sequences out of 15000+600000
+ 10867 words of font info for 38 fonts, out of 8000000 for 9000
  36 hyphenation exceptions out of 8191
- 41i,8n,28p,633b,377s stack positions out of 5000i,500n,10000p,200000b,80000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/am
-sfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts
-/cm/cmcsc10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/c
-mr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.p
-fb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on report.pdf (14 pages, 465921 bytes).
+ 42i,8n,42p,633b,455s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
+r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/sha
+re/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texl
+ive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/tex
+mf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texlive/texmf-dis
+t/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on report.pdf (15 pages, 542445 bytes).
 PDF statistics:
- 87 PDF objects out of 1000 (max. 8388607)
- 49 compressed objects within 1 object stream
+ 102 PDF objects out of 1000 (max. 8388607)
+ 54 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 41 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 

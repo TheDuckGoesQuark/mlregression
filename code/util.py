@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
+import pandas as pd
 from scipy.stats import stats
-from sklearn.feature_selection import mutual_info_classif
-from sklearn.metrics import mutual_info_score
+from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split, KFold, cross_val_score
 from sklearn.tree import DecisionTreeRegressor
 
@@ -156,3 +156,44 @@ def plot_depth_accuracy(x_train, y_train):
     plt.ylabel("Model Accuracy")
     plt.savefig("plots/depth.png")
     plt.show()
+
+
+def visualise_error(predicted, actual, variable_name):
+    rmse = mean_squared_error(actual, predicted)
+
+    differences = actual - predicted
+    plt.hist(differences, bins=40)
+    plt.title("Distribution of prediction differences")
+    plt.xlabel("Difference from actual {} value".format(variable_name))
+    plt.ylabel("Frequency")
+    plt.savefig("plots/{}errordist".format(variable_name))
+    plt.show()
+
+    plt.scatter(predicted, actual)
+    plt.title("Predicted {} against real values".format(variable_name))
+    plt.xlabel("Predicted {}".format(variable_name))
+    plt.ylabel("Actual {}".format(variable_name))
+    plt.text(15, 40, "RMSE = %.4f" % rmse, ha='center', va='center')
+    plt.savefig("plots/{}scatter".format(variable_name))
+    plt.show()
+
+    print(rmse)
+    print(pd.DataFrame({'Actual': actual, 'Predicted': predicted}))
+
+
+def visualise_feature_importance(model, title_variable):
+    # TODO improvie formatting and show percentages in legend maybe?
+    labels = ["X{}".format(i) for i in range(1, 8)]
+    importances = model.feature_importances_
+
+    feature_importance = pd.DataFrame(
+        {'Variable': labels, 'Importance': importances})
+
+    patches, texts = plt.pie(importances, startangle=90, radius=1.2)
+
+    plt.legend(patches, labels, loc='left center', bbox_to_anchor=(-0.1, 1.),
+               fontsize=8)
+
+    plt.show()
+
+    print(feature_importance.to_string(index=False))
