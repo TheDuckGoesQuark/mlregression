@@ -17,10 +17,31 @@ Stefano Schiavon, Kwang~Ho Lee, Fred Bauman, and Tom Webster.
   buildings.
 \newblock {\em Energy and Buildings}, 42(8):1182–1191, 2010.
 
+\bibitem{scikitlearntree}
+Scikit-learn decision trees.
+\newblock \url{https://scikit-learn.org/stable/modules/tree.html#tree}, cited
+  March 2019.
+
+\bibitem{breiman}
+Leo Breiman.
+\newblock Regression trees.
+\newblock {\em Classification And Regression Trees}, page 216–265.
+
 \bibitem{gron_2018}
 Aurlien Gron.
 \newblock {\em Hands-On Machine Learning with Scikit-Learn, Keras, and
   Tensorflow}.
 \newblock O'Reilly Media, 2018.
+
+\bibitem{hastie01statisticallearning}
+Trevor Hastie, Robert Tibshirani, and Jerome Friedman.
+\newblock {\em The Elements of Statistical Learning}.
+\newblock Springer Series in Statistics. Springer New York Inc., New York, NY,
+  USA, 2001.
+
+\bibitem{massaron_mueller_2015}
+Luca Massaron and John Mueller.
+\newblock {\em Python for Data Science for Dummies}.
+\newblock John Wiley \& Sons, Inc., 2015.
 
 \end{thebibliography}

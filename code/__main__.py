@@ -1,5 +1,7 @@
 import numpy as np
 import pandas as pd
+import matplotlib.pyplot as plt
+from sklearn.model_selection import KFold, cross_val_score
 from sklearn.tree import DecisionTreeRegressor
 
 import util
@@ -20,11 +22,10 @@ x_train = np.delete(x_train, 7, 1)
 x_test = np.delete(x_test, 7, 1)
 
 # Training
-model = DecisionTreeRegressor()
-model.fit(x_train, y_train[:, 0])
+util.plot_depth_accuracy(x_train, y_train)
 
-
-predicted = model.predict(x_test)
-
-df = pd.DataFrame({'Actual': y_test[:, 0], 'Predicted': predicted})
-print(df)
+#
+# predicted = model.predict(x_test)
+#
+# df = pd.DataFrame({'Actual': y_test[:, 0], 'Predicted': predicted})
+# print(df)

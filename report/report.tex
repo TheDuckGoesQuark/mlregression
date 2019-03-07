@@ -27,6 +27,9 @@
 \usepackage{url}
 \usepackage{graphicx}
 \usepackage[section]{placeins}
+\usepackage{chngcntr}
+
+\counterwithin*{section}{part}
 
 
 \begin{document}
@@ -94,11 +97,14 @@ The goal of this practical was to cleanse and process real world data in order t
 
 \part{Loading and Cleaning the Data}
 
+\section{Loading}
 Numpy was used to load the csv file. The header row was skipped, and to ensure there were no missing values, the invalid raise flag was also used when parsing the data. This would raise an exception if any rows were found to be missing data. 
 
 No preproccessing had occurred on the data set according to the original paper, and so the data could be used as given.
 
 The input and output columns were separated into two variables x and y, in accordance with the notation used in lectures.
+
+\section{Data Splitting}
 
 Next, the testing set was isolated from the available data. Simple random sampling (SRS) and stratified sampling were considered for performing the data splitting. SRS is intuitive, but for less uniformly distributed data sets, it can lead to subsets that poorly represent the input data, and therefore suffer from sampling bias \cite{reitermanova_2010}. 
 
@@ -107,6 +113,8 @@ For these reasons, stratified random sampling was used with a 80\%-20\% split.  
 The 586 possible values of Y1 were split into 50 bins using \url{numpy.digitize}, and then passed to \url{train_test_split} as the \url{stratify} argument. 
 
 \part{Analysing and Visualising the Data}
+
+\section{Distributions}
 
 Firstly, a histogram of each of the input variables and outputs were plotted in order to visualise the distribution of the values (Figures \ref{fig:xdist} and \ref{fig:ydist}). When comparing to the histograms from the given paper \cite{tsanas_xifara_2012}, most of the plots matched. Any differences were identified to be caused by 10 bins always being used (the default if not specified by numpy.hist), and the paper would sometimes use more. However, it was still clear that none of the variables had a gaussian distribution. The output variables also appeared tail heavy, but the inputs did not.
 
@@ -125,6 +133,8 @@ Firstly, a histogram of each of the input variables and outputs were plotted in 
 \end{figure}
 
 \FloatBarrier
+
+\section{Relationships}
 
 In order to identify which variables had the strongest relationships with the outputs, and if these relationships were linear or monotonic, scatter graphs were made between each input and output variable (Figures \ref{fig:xvsy0} and \ref{fig:xvsy1}). The inputs were normalised to allow for comparisons between values that could have very different ranges. To better visualise the density of the data points as well as their position, the \url{alpha} parameter was set to 0.1 in the plots. 
 
@@ -157,6 +167,8 @@ Since the distribution of the outputs were so similiar, they were also plotted a
 
 \part{Feature Selection}
 
+\section{Correlation Ranking}
+
 To try and identify which features had the strongest effect on the outputs, both the Pearson and Spearman rank correlation coefficients were considered. It was noted that the Pearson correlation would give a perfect value when the two variables were linearly related, whilst the Spearman correlation (a similiar alternative, and the one used in the original paper) would give a perfect value when the variables were monotonically related. Given these factors, the Spearman rank correlation coefficient was used as a filter method.
 
 From the scatter plots, some variables appeared to have a possible linear relationship with the outputs (for example, X7 and Y1), whilst others had a monotonic relationship (for example, X1 and Y1). Using the Scipy \emph{stats.spearmanr} method, the correlation coefficients were easily calculated, alongside a p-value, as shown in table \ref{tbl:spearman-table}. Immediately from these result we can see that X6 and X8 show little evidence of a monotonic relationship existing between them and either of the outputs. 
@@ -165,8 +177,7 @@ However, according to Schiavon et al. \cite{schiavon_lee_bauman_webster_2010}, t
 
 \begin{table}[!ht]
 \centering
-\caption{Spearman rank correlation coefficients, with p values}
-\label{tbl:spearman-table}j
+\label{tbl:spearman-table}
 \begin{tabular}{||l|l|l|l||}
 \hline
 X    				& Y & Rho   & p    \\
@@ -189,16 +200,47 @@ X    				& Y & Rho   & p    \\
 8                   & 2 & 0.06  & 0.14 \\
 \hline
 \end{tabular}
+\caption{Spearman rank correlation coefficients, with p values}
 \end{table}
 
 \part{Selecting and Training a Regression Model}
 
+\section{Model Selection}
 The limited size of the corpus available made the choice of algorithm especially crucial. The lack of noticable outliers in the visualistions at least suggest that the data is not of poor-quality. 
 
+Scikit-Learns \url{DecisionTreeRegressor} \cite{scikitlearntree} which implements CART was used as the regression model due to the complex relationships that appeared to exist between the inputs and outputs, using mean squared error as the cost function.
 
+Linear regression was deemed inappropriate as it is a global model. The relationships between the inputs as well as their individual valuddces seemed to have an effect on the output, and so a model that captured these inter-variable relationships would likely be more effective. The danger with using CART was that it could be more prone to overfitting, but placing limits on the complexity of the decision tree could reduce this risk. 
 
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.8 \linewidth]{images/cartvslinear}
+\caption{Comparison of CART and Linear Regression \cite{breiman}}
+\label{fig:cartvslinear}
+\end{figure}
 
-Due to the small corpus size, K-fold cross-validation was chosen to estimate the model error \cite{gron_2018}. 
+The model is constructed by recursively breaking down the training data and building a decision tree from each subsection of the data. The tree can then be used to make a prediction based on some input x by starting at the root node of the tree and using a series of questions to find the leaf node that would be our prediction. For example, one of the questions might be "is X1 greater than 0.5?" or "is X1 greater than X2?". CART constructs a binary decision tree by using the attribute that provides the most information gain at each stage.
+
+\section{Cost Function Selection}
+
+Root Mean Square Error (RMSE) and Mean Absolute Error (MAE) were both considered as performance measures for regression. RMSE minimizes for the squared difference between the estimated and expected values, whilst MAE minimizes for the absolute difference, therefore RMSE is more affected by outliers, which can result in overfitting. However the input data did not seem to contain many outliers, and so RMSE was chosen.
+
+\section{Validation Method}
+
+Due to the relatively small corpus size, K-fold cross-validation was chosen to estimate the model error \cite{gron_2018}. 10 folds were used as it provides a good compromise between bias and variance \cite{hastie01statisticallearning}.
+
+\section{Optimisations}
+
+By assessing the accuracy of the CART model at limited depths, we could attempt to limit the complexity of the decision tree created, and therefore reduce the chance of overfitting. By iteratively using k-fold cross validation and RMSE to produce an accuracy score at increasing depths, we would be able to find the point where increasing complexity does not benefit the model \cite{massaron_mueller_2015}. 
+
+Figure \ref{fig:depth} shows that performance begins to deteriorate once depth is greater than 6. Accuracy alone is not enough to confirm a models effectiveness, but can build confidence in the model when coupled with another method such as cross-validation.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=0.8 \linewidth]{images/depth}
+\caption{Accuracy of model with increasing decision tree depth}
+\label{fig:depth}
+\end{figure}
 
 \part{Performance Evaluation}
 

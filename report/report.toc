@@ -1,8 +1,17 @@
 \babel@toc {english}{}
 \contentsline {part}{I\hspace {1em}Loading and Cleaning the Data}{1}
+\contentsline {section}{\numberline {1}Loading}{1}
+\contentsline {section}{\numberline {2}Data Splitting}{1}
 \contentsline {part}{II\hspace {1em}Analysing and Visualising the Data}{1}
+\contentsline {section}{\numberline {1}Distributions}{2}
+\contentsline {section}{\numberline {2}Relationships}{3}
 \contentsline {part}{III\hspace {1em}Feature Selection}{5}
+\contentsline {section}{\numberline {1}Correlation Ranking}{5}
 \contentsline {part}{IV\hspace {1em}Selecting and Training a Regression Model}{6}
-\contentsline {part}{V\hspace {1em}Performance Evaluation}{7}
-\contentsline {part}{VI\hspace {1em}Discussion}{7}
-\contentsline {part}{VII\hspace {1em}Conclusion}{7}
+\contentsline {section}{\numberline {1}Model Selection}{7}
+\contentsline {section}{\numberline {2}Cost Function Selection}{8}
+\contentsline {section}{\numberline {3}Validation Method}{8}
+\contentsline {section}{\numberline {4}Optimisations}{9}
+\contentsline {part}{V\hspace {1em}Performance Evaluation}{9}
+\contentsline {part}{VI\hspace {1em}Discussion}{10}
+\contentsline {part}{VII\hspace {1em}Conclusion}{10}

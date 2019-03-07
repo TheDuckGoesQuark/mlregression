@@ -3,7 +3,8 @@ import numpy as np
 from scipy.stats import stats
 from sklearn.feature_selection import mutual_info_classif
 from sklearn.metrics import mutual_info_score
-from sklearn.model_selection import train_test_split
+from sklearn.model_selection import train_test_split, KFold, cross_val_score
+from sklearn.tree import DecisionTreeRegressor
 
 
 def load_inputs_and_outputs(filename):
@@ -129,3 +130,29 @@ def split_data(x, y):
     bins = np.linspace(0, y.shape[1], 50)
     y_binned = np.digitize(y[:, 0], bins)
     return train_test_split(x, y, test_size=0.2, random_state=42, stratify=y_binned)
+
+
+def plot_depth_accuracy(x_train, y_train):
+    depths = []
+    scores = []
+    cross_validator = KFold(n_splits=10, shuffle=True, random_state=42)
+    for depth in range(1, 11):
+        model = DecisionTreeRegressor(max_depth=depth, random_state=42)
+
+        if model.fit(x_train, y_train[:, 0]).tree_.max_depth < depth:
+            break
+
+        score = np.mean(cross_val_score(model, x_train, y_train[:, 0], cv=cross_validator, n_jobs=1))
+        depths.append(depth)
+        scores.append(score)
+        print("Depth %i Accuracy: %.5f" % (depth, score))
+
+    coeffecients = np.polyfit(np.log(depths), scores, 2)
+    fit = np.poly1d(coeffecients)
+    plt.scatter(depths, scores)
+    plt.plot(depths, fit(np.log(depths)), "r")
+    plt.title("Accuracy at Different Decision Tree Depths")
+    plt.xlabel("Decision Tree Depth")
+    plt.ylabel("Model Accuracy")
+    plt.savefig("plots/depth.png")
+    plt.show()
