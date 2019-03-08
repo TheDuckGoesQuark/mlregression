@@ -1,3 +1,4 @@
+import eli5
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
@@ -5,6 +6,7 @@ from scipy.stats import stats
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import train_test_split, KFold, cross_val_score
 from sklearn.tree import DecisionTreeRegressor
+from eli5.sklearn import PermutationImportance
 
 
 def load_inputs_and_outputs(filename):
@@ -171,16 +173,6 @@ def visualise_error(predicted, actual, variable_name):
     plt.savefig("plots/{}errordist".format(variable_name))
     plt.show()
 
-    # Check for normality of errors
-    k2, p = stats.normaltest(differences)
-    alpha = 1e-3
-    print("p = {:g}".format(p))
-    p = 3.27207e-11
-    if p < alpha:  # null hypothesis: x comes from a normal distribution
-        print("The null hypothesis can be rejected for {} model".format(variable_name))
-    else:
-        print("The null hypothesis cannot be rejected for {} model".format(variable_name))
-
     # Scatter
     plt.scatter(predicted, actual)
     plt.title("Predicted {} against real values".format(variable_name))
@@ -197,21 +189,19 @@ def visualise_error(predicted, actual, variable_name):
     plt.show()
 
     print(rmse)
-    print(pd.DataFrame({'Actual': actual, 'Predicted': predicted}))
 
 
-def visualise_feature_importance(model, title_variable):
+def visualise_feature_importance(model, title_variable, x_test, y_test):
+    print(eli5.format_as_text(
+        eli5.explain_weights(PermutationImportance(model, random_state=42).fit(x_test, y_test)))
+    )
+
     importances = model.feature_importances_
-    labels = ["X%d - %.4f%%" % (i, importances[i - 1]) for i in range(1, 8)]
-
-    feature_importance = pd.DataFrame(
-        {'Variable': labels, 'Importance': importances})
+    labels = ["X{} - {:4.1f}%".format(i, importances[i - 1] * 100) for i in range(1, 8)]
 
     patches, texts = plt.pie(importances, wedgeprops=dict(width=0.5), startangle=90, radius=1.2)
 
-    plt.legend(patches, labels, prop={'size': 12}, bbox_to_anchor=(0.75, 0.5), loc="center right", fontsize=8)
+    plt.legend(patches, labels, prop={'size': 12}, bbox_to_anchor=(0.74, 0.5), loc="center right", fontsize=8)
     plt.title("Feature Importance for {}".format(title_variable))
     plt.savefig("plots/fi{}.png".format(title_variable))
     plt.show()
-
-    print(feature_importance.to_string(index=False))

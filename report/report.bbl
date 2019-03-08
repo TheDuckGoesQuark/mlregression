@@ -44,4 +44,10 @@ Luca Massaron and John Mueller.
 \newblock {\em Python for Data Science for Dummies}.
 \newblock John Wiley \& Sons, Inc., 2015.
 
+\bibitem{aiimportance}
+Terence Parr, Kerem Turgutlu, Christopher Csiszar, and Jeremy Howard.
+\newblock Beware default random forest importances.
+\newblock \url{https://explained.ai/rf-importance/index.html}, cited March
+  2019.
+
 \end{thebibliography}

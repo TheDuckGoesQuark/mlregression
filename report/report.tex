@@ -259,7 +259,7 @@ When the \url{random_state} parameter was adjusted for the model, the distributi
   \centering
   \includegraphics[width=\linewidth]{images/fiY1}
   \caption{Feature Importance for Y1}
-  \label{fig:fiy1}
+  \label{fig:fiy1} 
 \end{subfigure}%
 \begin{subfigure}{.5\textwidth}
   \centering
@@ -270,6 +270,51 @@ When the \url{random_state} parameter was adjusted for the model, the distributi
 \caption{Feature Importance for models trained on the different outputs}
 \label{fig:fi}
 \end{figure}
+
+The feature importance calculation used by default Mean Decrease Impurity (MDI), where the values are calculated based on how much a feature reduces the MSE. Another method that can be used is permutation importance (PI), which instead shuffles the values for an attribute and measures how much this affects the model. If the output is heavily dependent on the shuffled attribute, then the accuracy should drop sharply when the values are shuffled.
+
+In comparison, MDI is quicker as it doesn't explore several permutations of the attributes, but is more biased than PI \cite{aiimportance}.
+
+The \url{eli5.sklearn} module was used to perform the permutation importance, which had very interesting results, shown in tables \ref{tbl:pi1} and \ref{tbl:pi2}.
+
+\begin{table}[!htb]
+    \begin{minipage}{.5\linewidth}
+      \caption{PI for Y1 model}   
+      \label{tbl:pi1}
+      \centering
+\begin{tabular}{||c|r|l||}
+\hline
+Variable    		& Importance & Error ($\pm$) \\
+\hline
+X1 & 0.30  & 0.03  \\
+X2 & 0.02  & 0.00  \\
+X3 & 0.02  & 0.01  \\
+X4 & 0.00  & 0.00  \\
+X5 & 2.49  & 0.36  \\
+X6 &-0.00  & 0.00  \\
+X7 & 0.22  & 0.04  \\
+\hline
+\end{tabular}
+    \end{minipage}%
+    \begin{minipage}{.5\linewidth}
+      \centering
+        \caption{PI for Y2 model}
+              \label{tbl:pi2}
+\begin{tabular}{||c|r|l||}
+\hline
+Variable    		& Importance & Error ($\pm$) \\
+\hline
+X1                   & 2.61 & 0.14   \\
+X2                   & 0.34 & 0.11  \\
+X3                   & 0.06 & 0.01 \\
+X4                   & 0.00 & 0.00  \\
+X5                   & 0.00 & 0.00  \\
+X6                   &-0.00 & 0.00  \\
+X7                   & 0.12 & 0.03   \\
+\hline
+\end{tabular}
+    \end{minipage} 
+\end{table}
 
 \FloatBarrier
 
@@ -317,11 +362,13 @@ The model was trained on the training data with the max depth set to 6, and then
 
 \section{Evaluation}
 
-The model seems to perform well with both outputs, and especially with Y1, based solely on the RMSE values. 
+The model seems to perform well with both outputs, and especially with Y1, based solely on the RMSE values. It performed just as well on the training data as it did on the test data, which suggests that overfitting has not occurred. For Y2, the RMSE is 0.08\% of the range of values, which should be accurate enough for most simulations that it could be used for. 
 
 \part{Discussion}
 
-\#TODO
+Due to the way the input data was generated, it is possible that the model could not be used globally. For example, the building simulation used Greece as a location, which has very different conditions to that of Alaska, for example. 
+
+RC, wall, roof area
 
 \part{Conclusion}
 

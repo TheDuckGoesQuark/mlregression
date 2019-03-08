@@ -28,13 +28,16 @@ y1_model.fit(x_train, y_train[:, 0])
 y2_model = DecisionTreeRegressor(max_depth=6, random_state=42)
 y2_model.fit(x_train, y_train[:, 1])
 
-util.visualise_feature_importance(y1_model, "Y1")
-util.visualise_feature_importance(y2_model, "Y2")
+y1_test = y_test[:, 0]
+y2_test = y_test[:, 1]
+
+util.visualise_feature_importance(y1_model, "Y1", x_test, y1_test)
+util.visualise_feature_importance(y2_model, "Y2", x_test, y2_test)
 
 y1_predicted = y1_model.predict(x_test)
 y2_predicted = y2_model.predict(x_test)
 
-util.visualise_error(y1_predicted, y_test[:, 0], "Y1")
-util.visualise_error(y2_predicted, y_test[:, 1], "Y2")
+util.visualise_error(y1_predicted, y1_test, "Y1")
+util.visualise_error(y2_predicted, y2_test, "Y2")
 
 
