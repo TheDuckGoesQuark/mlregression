@@ -109,9 +109,9 @@ The input and output columns were separated into two variables x and y, in accor
 
 Next, the testing set was isolated from the available data. Simple random sampling (SRS) and stratified sampling were considered for performing the data splitting. SRS is intuitive, but for less uniformly distributed data sets, it can lead to subsets that poorly represent the input data, and therefore suffer from sampling bias \cite{reitermanova_2010}. 
 
-For these reasons, stratified random sampling was used with a 80\%-20\% split.  To ensure our training and testing sets were representative of our data, the output variables were used to categorise the data into strata. Since the two appeared to have a linear relationship as shown in figure \ref{fig:y1vsy2}, we could assume that using one column for categorising our data would produce an roughly equal distribution of the values in both columns.
+For these reasons, stratified random sampling was used with a 80\%-20\% split.  To ensure the training and testing sets were representative of the data, the output variables were used to categorise the data into strata. Since the two appeared to be closely related, as shown in figure \ref{fig:y1vsy2}, we could assume that using one column for categorising our data would capture the range of values in both columns equally.
 
-The 586 possible values of Y1 were split into 50 bins using \url{numpy.digitize}, and then passed to \url{train_test_split} as the \url{stratify} argument. 
+To use the \url{stratify} argument in \url{train_test_split}, the values of Y1 were split into bins using \url{numpy.digitize}. Since each bin had to contain at least 2 values, the sizes of the bins had to be experimented with. Reducing the bin width decreases bias as it gives a finer representation of the actual values, but increases variance since fewer points will be available in each bin to build the model on.
 
 \part{Analysing and Visualising the Data}
 

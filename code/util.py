@@ -130,7 +130,7 @@ def spearman(x, y):
 
 
 def split_data(x, y):
-    bins = np.linspace(0, y.shape[1], 50)
+    bins = np.linspace(5, 45, 34)
     y_binned = np.digitize(y[:, 0], bins)
     return train_test_split(x, y, test_size=0.2, random_state=42, stratify=y_binned)
 
