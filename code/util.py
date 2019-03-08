@@ -48,6 +48,7 @@ def normalise(x):
     :param x: a 2D matrix of values
     :return: The normalised matrix
     """
+    x = np.copy(x)
     n_cols = x.shape[1]
     for col_index in range(n_cols):
         col = x[:, col_index]
