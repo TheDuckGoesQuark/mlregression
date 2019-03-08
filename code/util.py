@@ -162,6 +162,7 @@ def plot_depth_accuracy(x_train, y_train):
 def visualise_error(predicted, actual, variable_name):
     rmse = mean_squared_error(actual, predicted)
 
+    # Distribution
     differences = actual - predicted
     plt.hist(differences, bins=40)
     plt.title("Distribution of prediction differences")
@@ -170,12 +171,24 @@ def visualise_error(predicted, actual, variable_name):
     plt.savefig("plots/{}errordist".format(variable_name))
     plt.show()
 
+    # Check for normality of errors
+    k2, p = stats.normaltest(differences)
+    alpha = 1e-3
+    print("p = {:g}".format(p))
+    p = 3.27207e-11
+    if p < alpha:  # null hypothesis: x comes from a normal distribution
+        print("The null hypothesis can be rejected for {} model".format(variable_name))
+    else:
+        print("The null hypothesis cannot be rejected for {} model".format(variable_name))
+
+    # Scatter
     plt.scatter(predicted, actual)
     plt.title("Predicted {} against real values".format(variable_name))
     plt.xlabel("Predicted {}".format(variable_name))
     plt.ylabel("Actual {}".format(variable_name))
     plt.text(15, 40, "RMSE = %.4f" % rmse, ha='center', va='center')
 
+    # expected line
     coeffecients = np.polyfit(actual, actual, 1)
     fit = np.poly1d(coeffecients)
     plt.plot(actual, fit(actual), "r")

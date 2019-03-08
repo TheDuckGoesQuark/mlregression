@@ -251,7 +251,7 @@ Figure \ref{fig:fi} shows that the two models are strongly dependent on differen
 
 This is not the expected result based on the spearman rank correlation coefficients calculated in table \ref{tbl:spearman-table}. There also appears to be very little dependence in both models on X6 despite the results referred to from Schiavon et al \cite{schiavon_lee_bauman_webster_2010}.
 
-When the \url{
+When the \url{random_state} parameter was adjusted for the model, the distribution of feature importances remained roughly the same, and X1 and X5 were consistently the most important features. However, the performance of the model (discussed later) did not depend on this value. The parameter provides a seed for a random number generator that can allow the results to be reproduced, but a model that can generalise should not depend on this value.
 
 \begin{figure}[!ht]
 \centering
@@ -317,7 +317,7 @@ The model was trained on the training data with the max depth set to 6, and then
 
 \section{Evaluation}
 
-The model seems to perform well with both outputs, and especially with Y1, based solely on the RMSE values. \#TODO
+The model seems to perform well with both outputs, and especially with Y1, based solely on the RMSE values. 
 
 \part{Discussion}
 
