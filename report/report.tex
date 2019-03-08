@@ -178,7 +178,6 @@ However, according to Schiavon et al. \cite{schiavon_lee_bauman_webster_2010}, t
 
 \begin{table}[!ht]
 \centering
-\label{tbl:spearman-table}
 \begin{tabular}{||l|l|l|l||}
 \hline
 X    				& Y & Rho   & p    \\
@@ -202,6 +201,7 @@ X    				& Y & Rho   & p    \\
 \hline
 \end{tabular}
 \caption{Spearman rank correlation coefficients, with p values}
+\label{tbl:spearman-table}
 \end{table}
 
 \part{Selecting and Training a Regression Model}
@@ -234,7 +234,7 @@ Due to the relatively small corpus size, K-fold cross-validation was chosen to e
 
 By assessing the accuracy of the CART model at limited depths, we could attempt to limit the complexity of the decision tree created, and therefore reduce the chance of overfitting. By iteratively using k-fold cross validation and RMSE to produce an accuracy score at increasing depths, we would be able to find the point where increasing complexity does not benefit the model \cite{massaron_mueller_2015}. 
 
-Figure \ref{fig:depth} shows that performance begins to deteriorate once depth is greater than 6. Accuracy alone is not enough to confirm a models effectiveness, but can build confidence in the model when coupled with another method such as cross-validation.
+Figure \ref{fig:depth} shows that performance begins to deteriorate once depth is greater than 6. Accuracy alone is not enough to confirm a models effeccd tiveness, but can build confidence in the model when coupled with another method such as cross-validation.
 
 \begin{figure}[!ht]
 \centering
@@ -245,7 +245,31 @@ Figure \ref{fig:depth} shows that performance begins to deteriorate once depth i
 
 \section{Other Observations}
 
-Out of curiosity, the 'importance' of each variable was also \# TODO
+Out of curiosity, the 'importance' of each variable was also plotted to better understand what the regression model would be most affected by, and to see if this aligned with the feature selection methods used earlier.
+
+Figure \ref{fig:fi} shows that the two models are strongly dependent on different variables. Relative compactness has the strongest effect on the heating load, whilst overall height has the strongest effect on the cooling load.
+
+This is not the expected result based on the spearman rank correlation coefficients calculated in table \ref{tbl:spearman-table}.
+
+\begin{figure}[!ht]
+\centering
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{images/fiY1}
+  \caption{Feature Importance for Y1}
+  \label{fig:fiy1}
+\end{subfigure}%
+\begin{subfigure}{.5\textwidth}
+  \centering
+  \includegraphics[width=\linewidth]{images/fiY2}
+  \caption{Feature Importance for Y2}
+  \label{fig:fiy2}
+\end{subfigure}
+\caption{Feature Importance for models trained on the different outputs}
+\label{fig:fi}
+\end{figure}
+
+\FloatBarrier
 
 \part{Performance Evaluation}
 
@@ -291,8 +315,7 @@ The model was trained on the training data with the max depth set to 6, and then
 
 \section{Evaluation}
 
-The model seems to perform well with both outputs, and especially with Y1, based solely on the RMSE values. To provide an approx
-
+The model seems to perform well with both outputs, and especially with Y1, based solely on the RMSE values. To provide an approx 
 
 \part{Discussion}
 

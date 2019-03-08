@@ -174,6 +174,11 @@ def visualise_error(predicted, actual, variable_name):
     plt.xlabel("Predicted {}".format(variable_name))
     plt.ylabel("Actual {}".format(variable_name))
     plt.text(15, 40, "RMSE = %.4f" % rmse, ha='center', va='center')
+
+    coeffecients = np.polyfit(actual, actual, 1)
+    fit = np.poly1d(coeffecients)
+    plt.plot(actual, fit(actual), "r")
+
     plt.savefig("plots/{}scatter".format(variable_name))
     plt.show()
 
@@ -182,18 +187,17 @@ def visualise_error(predicted, actual, variable_name):
 
 
 def visualise_feature_importance(model, title_variable):
-    # TODO improvie formatting and show percentages in legend maybe?
-    labels = ["X{}".format(i) for i in range(1, 8)]
     importances = model.feature_importances_
+    labels = ["X%d - %.4f%%" % (i, importances[i - 1]) for i in range(1, 8)]
 
     feature_importance = pd.DataFrame(
         {'Variable': labels, 'Importance': importances})
 
-    patches, texts = plt.pie(importances, startangle=90, radius=1.2)
+    patches, texts = plt.pie(importances, wedgeprops=dict(width=0.5), startangle=90, radius=1.2)
 
-    plt.legend(patches, labels, loc='left center', bbox_to_anchor=(-0.1, 1.),
-               fontsize=8)
-
+    plt.legend(patches, labels, prop={'size': 12}, bbox_to_anchor=(0.75, 0.5), loc="center right", fontsize=8)
+    plt.title("Feature Importance for {}".format(title_variable))
+    plt.savefig("plots/fi{}.png".format(title_variable))
     plt.show()
 
     print(feature_importance.to_string(index=False))
