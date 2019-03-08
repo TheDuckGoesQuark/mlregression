@@ -271,11 +271,11 @@ When the \url{random_state} parameter was adjusted for the model, the distributi
 \label{fig:fi}
 \end{figure}
 
-The feature importance calculation used by default Mean Decrease Impurity (MDI), where the values are calculated based on how much a feature reduces the MSE. Another method that can be used is permutation importance (PI), which instead shuffles the values for an attribute and measures how much this affects the model. If the output is heavily dependent on the shuffled attribute, then the accuracy should drop sharply when the values are shuffled.
+The feature importance calculation used by default in \url{sklearn} is Mean Decrease Impurity (MDI), where the values are calculated based on how many times a variable is used to split the decision tree. Another method that can be used is permutation importance (PI), which instead shuffles the values for an attribute and measures how much this affects the model. If the output is heavily dependent on the shuffled attribute, then the accuracy should drop sharply when the values are shuffled.
 
-In comparison, MDI is quicker as it doesn't explore several permutations of the attributes, but is more biased than PI \cite{aiimportance}.
+In comparison, MDI is quicker as it doesn't explore several permutations of the attributes. On the other hand, since numerical variables have more split points than categorical data, MDI can be biased towards input variables of that type \cite{aiimportance}.
 
-The \url{eli5.sklearn} module was used to perform the permutation importance, which had very interesting results, shown in tables \ref{tbl:pi1} and \ref{tbl:pi2}.
+The \url{eli5.sklearn} module was used to perform the permutation importance, which had very interesting results, shown in tables \ref{tbl:pi1} and \ref{tbl:pi2}. It still showed X5 as the most importance for Y1 and X1 for Y2, but this was consistent regardless of the random state parameter.
 
 \begin{table}[!htb]
     \begin{minipage}{.5\linewidth}
@@ -315,6 +315,8 @@ X7                   & 0.12 & 0.03   \\
 \end{tabular}
     \end{minipage} 
 \end{table}
+
+Feature importance calculations using these methods can be used for feature selection, but wasn't for this practical.
 
 \FloatBarrier
 
@@ -364,15 +366,17 @@ The model was trained on the training data with the max depth set to 6, and then
 
 The model seems to perform well with both outputs, and especially with Y1, based solely on the RMSE values. It performed just as well on the training data as it did on the test data, which suggests that overfitting has not occurred. For Y2, the RMSE is 0.08\% of the range of values, which should be accurate enough for most simulations that it could be used for. 
 
+The feature importance calculations disagree with the results from Tsanas and Xifara \cite{tsanas_xifara_2012}, where they found X7 to be the best predictor. Similiar error was obtained in the predictions for Y1 , but not for Y2. 
+
 \part{Discussion}
 
 Due to the way the input data was generated, it is possible that the model could not be used globally. For example, the building simulation used Greece as a location, which has very different conditions to that of Alaska, for example. 
 
-RC, wall, roof area
-
 \part{Conclusion}
 
-\#TODO
+The practical proved very interesting, and comparing our interpretation of the data with that of an actual research paper was motivating. For each component in the practical, alternatives were considered and discussed in order to expand my knowledge of what tools were available and when each of them were most applicable. 
+
+\pagebreak
 
 \bibliographystyle{unsrt}
 \bibliography{mybib}
